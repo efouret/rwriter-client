@@ -3,8 +3,14 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default React.createClass({
     mixins: [PureRenderMixin],
+    contextTypes: {
+        router: React.PropTypes.object
+    },
     getProjects: function() {
         return this.props.projects || [];
+    },
+    goToProject: function(id) {
+      this.context.router.push(`/projects/${id}`);
     },
     render: function() {
         return (
@@ -27,7 +33,7 @@ export default React.createClass({
                     </thead>
                     <tbody>
                         { this.getProjects().map((project, i) => (
-                        <tr className="clickable-row" key={i}>
+                        <tr className="clickable-row" key={i} onClick={this.goToProject(project.get('id'))}>
                             <td>{project.get('type')}</td>
                             <td>{project.get('name')}</td>
                             <td>{project.get('status')}</td>
