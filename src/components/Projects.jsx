@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router';
 
 export default React.createClass({
     mixins: [PureRenderMixin],
@@ -18,7 +19,7 @@ export default React.createClass({
             <h1 className="page-header">Projects</h1>
 
             <ol className="breadcrumb">
-                <li><a href="index.html">Home</a></li>
+                <li><Link to="/">Home</Link></li>
             </ol>
 
             <div className="table-responsive">
@@ -33,7 +34,7 @@ export default React.createClass({
                     </thead>
                     <tbody>
                         { this.getProjects().map((project, i) => (
-                        <tr className="clickable-row" key={i} onClick={this.goToProject(project.get('id'))}>
+                        <tr className="clickable-row" key={i} onClick={this.goToProject.bind(null, project.get('id'))}>
                             <td>{project.get('type')}</td>
                             <td>{project.get('name')}</td>
                             <td>{project.get('status')}</td>

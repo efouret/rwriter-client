@@ -9,7 +9,7 @@ export const Project = React.createClass({
     return (
     <div>
         <NavBar />
-        <div class="container">
+        <div className="container">
         Hello!!
         My Project is {this.props.params.id}
         </div>

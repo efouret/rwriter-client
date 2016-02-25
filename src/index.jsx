@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducer';
@@ -24,14 +24,14 @@ store.dispatch({
   }
 });
 
-const routes = <Route component={App}>
-  <Route path="/" component={HomeContainer} />
-  <Route path="/projects/:id" component={ProjectContainer} />
-</Route>;
-
-ReactDOM.render(
+ReactDOM.render((
   <Provider store={store}>
-    <Router history={browserHistory}>{routes}</Router>
-  </Provider>,
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={HomeContainer} />
+        <Route path="projects/:id" component={ProjectContainer} />
+      </Route>
+    </Router>
+  </Provider>),
   document.getElementById('app')
 );

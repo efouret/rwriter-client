@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router';
 
 export default React.createClass({
     mixins: [PureRenderMixin],
@@ -18,7 +19,7 @@ export default React.createClass({
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
-                            <li><a href="#">Home</a></li>
+                            <li><Link to="/">Home</Link></li>
                             <li><a href="#">Project Summary</a></li>
                             <li><a href="#">Settings</a></li>
                             <li><a href="#">Help</a></li>
