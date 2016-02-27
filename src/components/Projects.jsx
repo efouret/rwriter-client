@@ -13,6 +13,9 @@ export default React.createClass({
     goToProject: function(id) {
       this.context.router.push(`/projects/${id}`);
     },
+    newProject: function() {
+      this.context.router.push(`/newproject`);
+    },
     render: function() {
         return (
            <div className="container">
@@ -34,7 +37,7 @@ export default React.createClass({
                     </thead>
                     <tbody>
                         { this.getProjects().map((project, i) => (
-                        <tr className="clickable-row" key={i} onClick={this.goToProject.bind(null, project.get('id'))}>
+                        <tr className="clickable-row" key={i} onClick={this.goToProject.bind(null, project.get('_id'))}>
                             <td>{project.get('type')}</td>
                             <td>{project.get('name')}</td>
                             <td>{project.get('status')}</td>
@@ -45,7 +48,7 @@ export default React.createClass({
                 </table>
             </div>
 
-            <button type="button" className="btn btn-success btn">
+            <button type="button" className="btn btn-success btn" onClick={this.newProject}>
                 <span className="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
             </button>
         </div>
