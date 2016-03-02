@@ -4,7 +4,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import {Map} from 'immutable';
 import {Link} from 'react-router';
-import * as actionCreators from '../action_creators';
+import * as actions from '../actions';
 
 export const NewProject = React.createClass({
   mixins: [PureRenderMixin],
@@ -60,4 +60,4 @@ function mapStateToProps(state) {
   };
 }
 
-export const NewProjectContainer = connect(mapStateToProps, actionCreators)(NewProject);
+export const NewProjectContainer = connect(mapStateToProps, actions)(NewProject);

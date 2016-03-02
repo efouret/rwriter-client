@@ -7,7 +7,7 @@ import io from 'socket.io-client';
 
 import reducer from './reducer';
 import remoteActionMiddleware from './remote_action_middleware';
-import {setState} from './action_creators';
+import {setState} from './actions';
 import App from './components/App';
 import {HomeContainer} from './components/Home';
 import {NewProjectContainer} from './components/NewProject';
