@@ -4,8 +4,9 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import io from 'socket.io-client';
+import {Map} from 'immutable';
 
-import reducer from './reducer';
+import reducer from './reducers';
 import remoteActionMiddleware from './remote_action_middleware';
 import {setState} from './actions';
 import App from './components/App';
@@ -15,10 +16,10 @@ import {ProjectContainer} from './components/Project';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
-const createStoreWithMiddleware = applyMiddleware(
+/*const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
-)(createStore);
-const store = createStoreWithMiddleware(reducer);
+)(createStore);*/
+const store = createStore(reducer, Map(), applyMiddleware(remoteActionMiddleware(socket)));
 
 socket.on('state', state =>
   store.dispatch(setState(state))
