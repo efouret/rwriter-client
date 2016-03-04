@@ -14,3 +14,12 @@ export function addProject(project) {
       currentProject: project
   };
 }
+
+export const GET_PROJECT = 'GET_PROJECT';
+export function getProject(projectId) {
+  return {
+      meta: {remote: true},
+      type: GET_PROJECT,
+      currentProject: {_id: projectId}
+  };
+}

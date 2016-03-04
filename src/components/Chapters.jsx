@@ -5,10 +5,13 @@ import {connect} from 'react-redux';
 import {Map} from 'immutable';
 import {Link} from 'react-router';
 
-export const Project = React.createClass({
+export const Chapters = React.createClass({
   mixins: [PureRenderMixin],
+  getProjects: function() {
+    return this.props.projects || [];
+  },
   getProject: function() {
-    return this.props.currentProject || new Map();
+    return this.getProjects().find(p => p.get('_id') === this.props.params.id) || new Map();
   },
   render: function() {
     return (
@@ -42,8 +45,8 @@ export const Project = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    currentProject: state.get('currentProject')
+    projects: state.get('projects')
   };
 }
 
-export const ProjectContainer = connect(mapStateToProps)(Project);
+export const ChaptersContainer = connect(mapStateToProps)(Chapters);

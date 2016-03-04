@@ -8,7 +8,7 @@ export default React.createClass({
         return this.props.projects || [];
     },
     goToProject: function(id) {
-      //this.context.router.push(`/projects/${id}`);
+      this.props.getProject(id);
       browserHistory.push(`/projects/${id}`);
     },
     newProject: function() {
