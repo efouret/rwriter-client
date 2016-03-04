@@ -1,20 +1,19 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 
 export default React.createClass({
     mixins: [PureRenderMixin],
-    contextTypes: {
-        router: React.PropTypes.object
-    },
     getProjects: function() {
         return this.props.projects || [];
     },
     goToProject: function(id) {
-      this.context.router.push(`/projects/${id}`);
+      //this.context.router.push(`/projects/${id}`);
+      browserHistory.push(`/projects/${id}`);
     },
     newProject: function() {
-      this.context.router.push(`/newproject`);
+      //this.context.router.push(`/newproject`);
+      browserHistory.push(`/newproject`);
     },
     render: function() {
         return (

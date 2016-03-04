@@ -6,11 +6,11 @@ export function setState(state) {
   };
 }
 
-export const CREATE_PROJECT = 'CREATE_PROJECT';
-export function createProject(project) {
+export const ADD_PROJECT = 'ADD_PROJECT';
+export function addProject(project) {
   return {
       meta: {remote: true},
-      type: CREATE_PROJECT,
-      project
+      type: ADD_PROJECT,
+      currentProject: project
   };
 }

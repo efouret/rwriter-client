@@ -8,15 +8,19 @@ import * as actions from '../actions';
 
 export const NewProject = React.createClass({
   mixins: [PureRenderMixin],
-  createProject: function(name, type) {
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+  addProject: function(name, type) {
     console.log(`New project of type ${type}: '${name}'`);
-    this.props.createProject({name, type});
+    this.props.addProject({name, type});
   },
   render: function() {
       let name, type;
 
       const onClick = (e) => {
-          this.createProject(name.value, type.value);
+          this.addProject(name.value, type.value);
+          this.context.router.push(`/`);
           e.preventDefault();
       }
 
