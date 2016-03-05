@@ -12,7 +12,6 @@ export default React.createClass({
       browserHistory.push(`/projects/${id}`);
     },
     newProject: function() {
-      //this.context.router.push(`/newproject`);
       browserHistory.push(`/newproject`);
     },
     render: function() {

@@ -4,29 +4,22 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux'
-import io from 'socket.io-client';
 import {Map} from 'immutable';
-import { combineReducers } from 'redux-immutable';
+import thunkMiddleware from 'redux-thunk';
 
-import reducers from './reducers';
-import remoteActionMiddleware from './middlewares/remote_action_middleware';
+import rootReducer from './reducers/index';
 import logger from './middlewares/logger';
-import {setState} from './actions';
+import {fetchProjects} from './actions';
 import App from './components/App';
 import {HomeContainer} from './components/Home';
 import {NewProjectContainer} from './components/NewProject';
 import {ProjectContainer} from './components/Project';
 import {ChaptersContainer} from './components/Chapters';
 
-const socket = io(`${location.protocol}//${location.hostname}:8090`);
-
-const store = createStore(combineReducers(reducers), Map(), applyMiddleware(remoteActionMiddleware(socket), logger));
-
-socket.on('state', state =>
-  store.dispatch(setState(state))
-);
-
+const store = createStore(rootReducer, Map(), applyMiddleware(thunkMiddleware, logger));
 const history = syncHistoryWithStore(browserHistory, store, {selectLocationState: state => state.get('routing')})
+
+store.dispatch(fetchProjects());
 
 ReactDOM.render((
   <Provider store={store}>
