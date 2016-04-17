@@ -1,0 +1,14 @@
+<div *ngIf="errorMessage">
+  Une erreur est survenue : {{errorMessage}}
+</div>
+<div class="l-grid">
+  <nav class="sidebar l-col">
+    <ul>
+      <li><a [routerLink]="['ProjectDetail', {id:id}]">Accueil</a></li>
+      <li><a [routerLink]="['Characters', {id:id}]">Personnages</a></li>
+      <li><a [routerLink]="['Locations', {id:id}]">Lieux</a></li>
+      <li><a [routerLink]="['Chapters', {id:id}]">Chapitres</a></li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
