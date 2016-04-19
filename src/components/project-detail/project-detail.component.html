@@ -1,11 +1,14 @@
-<project-nav *ngIf="project" [id]="project.id"></project-nav>
-<div *ngIf="errorMessage">
-  Une erreur est survenue : {{errorMessage}}
-</div>
-<div *ngIf="project" class="l-col">
-  <h2>{{project.name}}</h2>
-  <div>
-    <label>Nom : </label>
-    <input [(ngModel)]="project.name" placeholder="Nom" />
+<div class="l-grid projectDetail">
+  <project-nav *ngIf="project" [id]="project._id" [active]="'ProjectDetail'"></project-nav>
+
+  <div *ngIf="project" class="l-col">
+    <h2>{{project.name}}</h2>
+    <div *ngIf="errorMessage">
+      Une erreur est survenue : {{errorMessage}}
+    </div>
+    <div>
+      <label>Nom : </label>
+      <input [(ngModel)]="project.name" placeholder="Nom" />
+    </div>
   </div>
 </div>

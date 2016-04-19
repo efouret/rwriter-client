@@ -1,9 +1,9 @@
-.characters {
+.locations {
   margin: 0 0 2rem 0;
   list-style-type: none;
   padding: 0;
 }
-.characters--character {
+.locations--location {
   cursor: pointer;
   background-color: #EEE;
   margin: .1rem;
@@ -11,7 +11,7 @@
   border-radius: 4px;
   border: 1px solid #DDD;
 }
-.characters--character:hover {
+.locations--location:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1rem;

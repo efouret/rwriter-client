@@ -1,6 +1,7 @@
-<h1>{{title}}</h1>
-<nav>
-    <a [routerLink]="['Projects']">Projets</a>
-</nav>
+<section class="main l-grid">
+    <h1 class="mainTitle l-col">{{title}}</h1>
+    <nav class="mainNav l-col">
+        <a class="mainNav--link" [routerLink]="['Projects']">Projets</a>
+    </nav>
+</section>
 <router-outlet></router-outlet>
-

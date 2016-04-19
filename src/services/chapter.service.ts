@@ -2,22 +2,22 @@ import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 
-import {Project} from './project';
+import {Chapter} from './chapter';
 
 @Injectable()
-export class ProjectService {
+export class ChapterService {
     constructor(private http: Http) { }
 
-    private _projectsUrl = 'http://localhost:8090/projects';
+    private _chaptersUrl = 'http://localhost:8090/chapters';
 
-    getProjects(): Observable<Project[]> {
-        return this.http.get(this._projectsUrl)
+    getChapters(projectId: string): Observable<Chapter[]> {
+        return this.http.get(`${this._chaptersUrl}?project=${projectId}`)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    getProject(id: string) {
-        return this.http.get(`${this._projectsUrl}/${id}`)
+    getChapter(id: string) {
+        return this.http.get(`${this._chaptersUrl}/${id}`)
             .map(this.extractData)
             .catch(this.handleError);
     }

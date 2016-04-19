@@ -1,8 +1,13 @@
-<h1>{{title}}</h1>
-<h2>Personnages</h2>
-<div *ngIf="errorMessage">
-  Une erreur est survenue : {{errorMessage}}
+<div class="l-grid">
+  <project-nav *ngIf="id" [id]="id" [active]="'Characters'"></project-nav>
+
+  <h1>{{title}}</h1>
+  <h2>Personnages</h2>
+  <div *ngIf="errorMessage">
+    Une erreur est survenue : {{errorMessage}}
+  </div>
+
+  <ul class="characters">
+    <li *ngFor="#character of characters" class="characters--character" (click)="onSelect(character)">{{character.name}}</li>
+  </ul>
 </div>
-<ul class="characters">
-  <li *ngFor="#character of characters" class="characters--character" (click)="onSelect(character)">{{character.name}}</li>
-</ul>

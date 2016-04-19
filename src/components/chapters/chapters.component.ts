@@ -1,30 +1,31 @@
 import {Component, Input, OnInit} from 'angular2/core';
-import {Character} from '../../services/character';
+import {Chapter} from '../../services/chapter';
 import { RouteParams, Router, ROUTER_DIRECTIVES } from 'angular2/router';
-import { CharacterService } from '../../services/character.service';
+import { ChapterService } from '../../services/chapter.service';
+import { ProjectNavComponent } from '../project-nav/project-nav.component';
 
 @Component({
     selector: 'chapters',
     templateUrl: 'src/components/chapters/chapters.component.html',
     styleUrls: ['src/components/chapters/chapters.component.css'],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, ProjectNavComponent]
 })
 export class ChaptersComponent implements OnInit {
-    @Input()
-    characters: Character[];
+    id: string;
+    chapters: Chapter[];
     errorMessage: string;
 
     constructor(
         private _router: Router,
-        private _characterService: CharacterService,
+        private _characterService: ChapterService,
         private _routeParams: RouteParams) {
     }
 
     ngOnInit() {
-        let id = this._routeParams.get('id');
-        this._characterService.getCharacters(id)
+        this.id = this._routeParams.get('id');
+        this._characterService.getChapters(this.id)
             .subscribe(
-            characters => this.characters = characters,
+            chapters => this.chapters = chapters,
             error => this.errorMessage = <any>error);
     }
 

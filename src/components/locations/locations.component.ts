@@ -1,30 +1,31 @@
-import {Component, Input, OnInit} from 'angular2/core';
-import {Character} from '../../services/character';
+import { Component, Input, OnInit } from 'angular2/core';
+import { Location } from '../../services/location';
 import { RouteParams, Router, ROUTER_DIRECTIVES } from 'angular2/router';
-import { CharacterService } from '../../services/character.service';
+import { LocationService } from '../../services/location.service';
+import { ProjectNavComponent } from '../project-nav/project-nav.component';
 
 @Component({
     selector: 'locations',
     templateUrl: 'src/components/locations/locations.component.html',
     styleUrls: ['src/components/locations/locations.component.css'],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, ProjectNavComponent]
 })
 export class LocationsComponent implements OnInit {
-    @Input()
-    characters: Character[];
+    id: string;
+    locations: Location[];
     errorMessage: string;
 
     constructor(
         private _router: Router,
-        private _characterService: CharacterService,
+        private _locationService: LocationService,
         private _routeParams: RouteParams) {
     }
 
     ngOnInit() {
-        let id = this._routeParams.get('id');
-        this._characterService.getCharacters(id)
+        this.id = this._routeParams.get('id');
+        this._locationService.getLocations(this.id)
             .subscribe(
-            characters => this.characters = characters,
+            locations => this.locations = locations,
             error => this.errorMessage = <any>error);
     }
 

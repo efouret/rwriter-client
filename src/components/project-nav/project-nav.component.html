@@ -1,8 +1,8 @@
-  <nav class="sidebar l-col">
-    <ul>
-      <li><a [routerLink]="['ProjectDetail', {id:id}]">Accueil</a></li>
-      <li><a [routerLink]="['Characters', {id:id}]">Personnages</a></li>
-      <li><a [routerLink]="['Locations', {id:id}]">Lieux</a></li>
-      <li><a [routerLink]="['Chapters', {id:id}]">Chapitres</a></li>
-    </ul>
-  </nav>
+<nav class="l-col projectNav">
+  <ul class="projectNav--list">
+    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='ProjectDetail'}" class="projectNav--link" [routerLink]="['ProjectDetail', {id:id}]">Accueil</a></li>
+    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='Characters'}" class="projectNav--link" [routerLink]="['Characters', {id:id}]">Personnages</a></li>
+    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='Locations'}" class="projectNav--link" [routerLink]="['Locations', {id:id}]">Lieux</a></li>
+    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='Chapters'}" class="projectNav--link" [routerLink]="['Chapters', {id:id}]">Chapitres</a></li>
+  </ul>
+</nav>
