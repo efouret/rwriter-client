@@ -8,7 +8,7 @@ import {Project} from './project';
 export class ProjectService {
     constructor(private http: Http) { }
 
-    private _projectsUrl = 'http://localhost:8090/projects';
+    private _projectsUrl = 'http://efouret.fr.to:8090/projects';
 
     getProjects(): Observable<Project[]> {
         return this.http.get(this._projectsUrl)

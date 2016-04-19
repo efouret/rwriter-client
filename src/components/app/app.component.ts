@@ -3,8 +3,10 @@ import { HTTP_PROVIDERS }    from 'angular2/http';
 import { ProjectService } from '../../services/project.service';
 import { CharacterService } from '../../services/character.service';
 import { ProjectsComponent } from '../projects/projects.component';
-import { ProjectComponent } from '../project/project.component';
+import { ProjectDetailComponent } from '../project-detail/project-detail.component';
 import { CharactersComponent } from '../characters/characters.component';
+import { LocationsComponent } from '../locations/locations.component';
+import { ChaptersComponent } from '../chapters/chapters.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @Component({
@@ -21,7 +23,10 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 })
 @RouteConfig([
   { path: '/projects', name: 'Projects', component: ProjectsComponent },
-  { path: '/project/...', name: 'Project', component: ProjectComponent }
+  { path: '/projects/:id', name: 'ProjectDetail', component: ProjectDetailComponent },
+  { path: '/projects/:id/characters', name: 'Characters', component: CharactersComponent },
+  { path: '/projects/:id/locations', name: 'Locations', component: LocationsComponent },
+  { path: '/projects/:id/chapters', name: 'Chapters', component: ChaptersComponent }
 ])
 export class AppComponent {
   title = 'RWriter';

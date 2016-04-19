@@ -2,12 +2,13 @@ import {Component, Input, OnInit} from 'angular2/core';
 import {Project} from '../../services/project';
 import { RouteParams, Router, ROUTER_DIRECTIVES, OnActivate, ComponentInstruction } from 'angular2/router';
 import { ProjectService } from '../../services/project.service';
+import { ProjectNavComponent } from '../project-nav/project-nav.component';
 
 @Component({
     selector: 'project-detail',
     templateUrl: 'src/components/project-detail/project-detail.component.html',
     styleUrls: ['src/components/project-detail/project-detail.component.css'],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, ProjectNavComponent]
 })
 export class ProjectDetailComponent implements OnInit, OnActivate {
     @Input()

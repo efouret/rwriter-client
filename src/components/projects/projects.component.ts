@@ -30,6 +30,6 @@ export class ProjectsComponent implements OnInit {
     }
 
     onSelect(project: Project) {
-        this._router.navigateByUrl(`/project/${project._id}`);
+        this._router.navigate(['ProjectDetail', {id: project._id}]);
     }
 }
