@@ -4,11 +4,13 @@ import {Observable}     from 'rxjs/Observable';
 
 import {Location} from './location';
 
+import {Config} from '../config';
+
 @Injectable()
 export class LocationService {
     constructor(private http: Http) { }
 
-    private _locationsUrl = 'http://localhost:8090/locations';
+    private _locationsUrl = Config.backBaseUrl+'/locations';
 
     getLocations(projectId: string): Observable<Location[]> {
         return this.http.get(`${this._locationsUrl}?project=${projectId}`)

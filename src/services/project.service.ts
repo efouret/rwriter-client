@@ -4,11 +4,13 @@ import {Observable}     from 'rxjs/Observable';
 
 import {Project} from './project';
 
+import { Config } from '../config';
+
 @Injectable()
 export class ProjectService {
     constructor(private http: Http) { }
 
-    private _projectsUrl = 'http://localhost:8090/projects';
+    private _projectsUrl = Config.backBaseUrl + '/projects';
 
     getProjects(): Observable<Project[]> {
         return this.http.get(this._projectsUrl)

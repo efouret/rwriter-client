@@ -4,11 +4,13 @@ import {Observable}     from 'rxjs/Observable';
 
 import {Character} from './character';
 
+import {Config} from '../config';
+
 @Injectable()
 export class CharacterService {
     constructor(private http: Http) { }
 
-    private _charactersUrl = 'http://localhost:8090/characters';
+    private _charactersUrl = Config.backBaseUrl + '/characters';
 
     getCharacters(projectId: string): Observable<Character[]> {
         return this.http.get(`${this._charactersUrl}?project=${projectId}`)
