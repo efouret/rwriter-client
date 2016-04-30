@@ -6,6 +6,6 @@
     Une erreur est survenue : {{errorMessage}}
   </div>
   <ul class="chapters">
-    <li *ngFor="#chapter of chapters" class="chapters--chapter" (click)="onSelect(chapter)">{{chapter.name}}</li>
+    <li *ngFor="let chapter of chapters" class="chapters--chapter" (click)="onSelect(chapter)">{{chapter.name}}</li>
   </ul>
 </div>

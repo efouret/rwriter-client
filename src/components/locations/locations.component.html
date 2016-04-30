@@ -6,6 +6,6 @@
     Une erreur est survenue : {{errorMessage}}
   </div>
   <ul class="locations">
-    <li *ngFor="#location of locations" class="locations--location" (click)="onSelect(location)">{{location.name}}</li>
+    <li *ngFor="let location of locations" class="locations--location" (click)="onSelect(location)">{{location.name}}</li>
   </ul>
 </div>

@@ -1,8 +1,13 @@
-<h1>{{title}}</h1>
-<h2>Projets</h2>
-<div *ngIf="errorMessage">
-  Une erreur est survenue : {{errorMessage}}
-</div>
-<ul class="projects">
-  <li *ngFor="#project of projects" class="projects--project" (click)="onSelect(project)">{{project.name}}</li>
-</ul>
+<section class="projects">
+  <h1>{{title}}</h1>
+  <h2>Projets</h2>
+  <div *ngIf="errorMessage">
+    Une erreur est survenue : {{errorMessage}}
+  </div>
+  <button class="button button-add" (click)="createNewProject()">+</button>
+  <ul class="projects--list">
+    <li *ngFor="let project of projects" class="projects--project" (click)="onSelect(project)">
+      {{project.name}}
+    </li>
+  </ul>
+</section>

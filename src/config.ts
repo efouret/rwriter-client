@@ -1,3 +1,3 @@
 export const Config = {
-    backBaseUrl: 'http://efouret.fr.to:8090'
+    backBaseUrl: 'http://localhost:8090'
 };

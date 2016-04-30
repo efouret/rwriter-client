@@ -32,4 +32,8 @@ export class ProjectsComponent implements OnInit {
     onSelect(project: Project) {
         this._router.navigate(['ProjectDetail', {id: project._id}]);
     }
+
+    createNewProject() {
+        this._router.navigate(['ProjectDetail', {id: 'new'}]);
+    }
 }

@@ -1,5 +1,10 @@
 .projectDetail {
   width: 100%;
-  background-color: #aaa;
+  background-color: #f5f5f5;
   padding: 0;
+}
+
+.projectDetail--form {
+  display: flex;
+  flex-direction: column;
 }

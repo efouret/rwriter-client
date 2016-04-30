@@ -6,9 +6,17 @@
     <div *ngIf="errorMessage">
       Une erreur est survenue : {{errorMessage}}
     </div>
-    <div>
-      <label>Nom : </label>
-      <input [(ngModel)]="project.name" placeholder="Nom" />
-    </div>
+    <form class="projectDetail--form">
+      <label for="name" class="label">Nom : </label>
+      <input class="input" [(ngModel)]="project.name" id="name" placeholder="Nom" />
+
+      <label for="type" class="label">Type :</label>
+      <select class="input" [(ngModel)]="project.type" id="type">
+        <option value="NOVEL">Roman</option>
+        <option value="SHORT_STORY">Nouvelle</option>
+      </select>
+
+      <input class="button button-submit" type="submit" value="Enregistrer" (click)="saveProject()">
+    </form>
   </div>
 </div>

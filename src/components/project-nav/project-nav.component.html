@@ -1,8 +1,8 @@
 <nav class="l-col projectNav">
   <ul class="projectNav--list">
-    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='ProjectDetail'}" class="projectNav--link" [routerLink]="['ProjectDetail', {id:id}]">Accueil</a></li>
-    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='Characters'}" class="projectNav--link" [routerLink]="['Characters', {id:id}]">Personnages</a></li>
-    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='Locations'}" class="projectNav--link" [routerLink]="['Locations', {id:id}]">Lieux</a></li>
-    <li class="projectNav--item"><a [ngClass]="{'projectNav--active': active==='Chapters'}" class="projectNav--link" [routerLink]="['Chapters', {id:id}]">Chapitres</a></li>
+    <li [ngClass]="{'projectNav--active': active==='ProjectDetail'}" (click)="goTo(['ProjectDetail', {id:id}])" class="projectNav--item">Accueil</li>
+    <li [ngClass]="{'projectNav--active': active==='Characters'}" class="projectNav--item" (click)="goTo(['Characters', {id:id}])">Personnages</li>
+    <li [ngClass]="{'projectNav--active': active==='Locations'}" class="projectNav--item" (click)="goTo(['Locations', {id:id}])">Lieux</li>
+    <li [ngClass]="{'projectNav--active': active==='Chapters'}" class="projectNav--item" (click)="goTo(['Chapters', {id:id}])">Chapitres</li>
   </ul>
 </nav>

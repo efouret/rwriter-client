@@ -28,7 +28,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   ]
 })
 @RouteConfig([
-  { path: '/projects', name: 'Projects', component: ProjectsComponent },
+  { path: '/projects', name: 'Projects', component: ProjectsComponent, useAsDefault: true },
   { path: '/projects/:id', name: 'ProjectDetail', component: ProjectDetailComponent },
   { path: '/projects/:id/characters', name: 'Characters', component: CharactersComponent },
   { path: '/projects/:id/locations', name: 'Locations', component: LocationsComponent },

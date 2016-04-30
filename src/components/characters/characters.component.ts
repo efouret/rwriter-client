@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from 'angular2/core';
 import { Character } from '../../services/character';
+import { Link } from '../../services/link';
 import { RouteParams, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import { CharacterService } from '../../services/character.service';
 import { ProjectNavComponent } from '../project-nav/project-nav.component';
@@ -14,6 +15,8 @@ export class CharactersComponent implements OnInit {
     characters: Character[];
     errorMessage: string;
     id: string;
+    creatingNew: boolean = false;
+    character: Character;
 
     constructor(
         private _router: Router,
@@ -29,7 +32,26 @@ export class CharactersComponent implements OnInit {
             error => this.errorMessage = <any>error);
     }
 
-    goBack() {
-        window.history.back();
+    createNewCharacter() {
+        this.creatingNew = true;
+        this.character = new Character();
+        this.character.project = new Link();
+        this.character.project.id = this.id;
+    }
+
+    saveCharacter() {
+        console.log('will create...');
+        console.log(this.character);
+
+        this._characterService.createCharacter(this.character)
+            .subscribe(characterId => {
+                this._characterService.getCharacter(characterId.substr(characterId.lastIndexOf('/') + 1))
+                .subscribe(character => {
+                    this.characters.push(character);
+                    this.creatingNew = false;
+                },
+                error => this.errorMessage = <any>error);
+            },
+            error => this.errorMessage = <any>error);
     }
 }

@@ -1,30 +1,22 @@
 .projectNav {
   height: 100%;
-  background-color: #333;
-  border-right: 1rem solid #ccc;
-}
-
-.projectNav--list {
-  padding-top: 0.5rem;
+  background-color: #888;
+  border-right: 0.3rem solid #ccc;
 }
 
 .projectNav--item {
-  margin-bottom: 1.5rem;
   text-transform: uppercase;
   text-align: left;
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  border-bottom: 0.05rem solid #aaa;
+  cursor: pointer;
+  color: #eee;
 }
 
-.projectNav--link {
-  color: #aaa;
-  text-decoration: none;
-}
-
-.projectNav--link:hover {
-  text-decoration: underline;
+.projectNav--item:hover {
+  background-color: #555;
 }
 
 .projectNav--active {
-  text-decoration: underline;
+  background-color: #555;
 }

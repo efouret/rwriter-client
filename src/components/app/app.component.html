@@ -1,7 +1,9 @@
-<section class="main l-grid">
+<header class="main l-grid">
     <h1 class="mainTitle l-col">{{title}}</h1>
     <nav class="mainNav l-col">
         <a class="mainNav--link" [routerLink]="['Projects']">Projets</a>
     </nav>
+</header>
+<section class="container">
+    <router-outlet></router-outlet>
 </section>
-<router-outlet></router-outlet>
