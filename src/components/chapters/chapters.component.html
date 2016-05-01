@@ -1,11 +1,17 @@
 <div class="l-grid">
-  <project-nav *ngIf="id" [id]="id" [active]="'Chapters'"></project-nav>
-  <h1>{{title}}</h1>
-  <h2>Chapitres</h2>
-  <div *ngIf="errorMessage">
-    Une erreur est survenue : {{errorMessage}}
+  <project-nav [id]="id" [active]="'Chapters'"></project-nav>
+
+  <div class="l-col">
+    <h2>Chapitres</h2>
+    <div *ngIf="errorMessage">
+      Une erreur est survenue : {{errorMessage}}
+    </div>
+
+    <button class="button button-add" (click)="createNewChapter()">+</button>
+
+    <ul class="chapters">
+      <li *ngFor="let chapter of chapters" class="chapters--chapter" (click)="onSelect(chapter)">{{chapter.title}}</li>
+    </ul>
   </div>
-  <ul class="chapters">
-    <li *ngFor="let chapter of chapters" class="chapters--chapter" (click)="onSelect(chapter)">{{chapter.name}}</li>
-  </ul>
+
 </div>

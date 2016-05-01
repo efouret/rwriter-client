@@ -11,6 +11,7 @@ import { ProjectDetailComponent } from '../project-detail/project-detail.compone
 import { CharactersComponent } from '../characters/characters.component';
 import { LocationsComponent } from '../locations/locations.component';
 import { ChaptersComponent } from '../chapters/chapters.component';
+import { ChapterDetailComponent } from '../chapter-detail/chapter-detail.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @Component({
@@ -32,7 +33,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   { path: '/projects/:id', name: 'ProjectDetail', component: ProjectDetailComponent },
   { path: '/projects/:id/characters', name: 'Characters', component: CharactersComponent },
   { path: '/projects/:id/locations', name: 'Locations', component: LocationsComponent },
-  { path: '/projects/:id/chapters', name: 'Chapters', component: ChaptersComponent }
+  { path: '/projects/:id/chapters', name: 'Chapters', component: ChaptersComponent },
+  { path: '/projects/:projectId/chapters/:id', name: 'ChapterDetail', component: ChapterDetailComponent }
 ])
 export class AppComponent {
   title = 'RWriter';

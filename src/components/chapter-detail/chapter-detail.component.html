@@ -1,0 +1,28 @@
+<div class="l-grid">
+  <project-nav [id]="projectId" [active]="'Chapters'"></project-nav>
+
+  <div class="l-col" *ngIf="chapter">
+    <h2>Chapitre</h2>
+    <div *ngIf="errorMessage">
+      Une erreur est survenue : {{errorMessage}}
+    </div>
+
+    <form class="chapterDetail--form">
+      <label for="title" class="label">Titre : </label>
+      <input class="input" [(ngModel)]="chapter.title" id="title" placeholder="Titre" />
+
+      <input type="submit" value="Enregistrer" (click)="saveChapter()">
+    </form>
+
+    <h3>Scènes</h3>
+    <ul class="chapterDetail--scenes">
+      <li *ngFor="let scene of scenes">
+        <scene [scene]="scene"></scene>
+      </li>
+      <li>
+        <scene-add [chapterId]="id"></scene-add>
+      </li>
+    </ul>
+  </div>
+
+</div>

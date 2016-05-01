@@ -32,6 +32,14 @@ export class CharacterService {
             .catch(this.handleError);
     }
 
+    updateCharacter(character: Character) {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers});
+        return this.http.put(`${this._charactersUrl}/${character._id}`, JSON.stringify(character), options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     extractData(res: Response) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);

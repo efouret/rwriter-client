@@ -16,3 +16,15 @@
   background-color: #DDD;
   left: .1rem;
 }
+
+.characters--character--details {
+    cursor: default;
+    background-color: white;
+    padding: 1rem;
+    color: black;
+}
+
+.characters--character--details:hover {
+  background-color: white;
+  color: black;
+}

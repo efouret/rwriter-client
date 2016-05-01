@@ -17,6 +17,8 @@ export class CharactersComponent implements OnInit {
     id: string;
     creatingNew: boolean = false;
     character: Character;
+    selectedCharacter: Character;
+    editables: Map<string, boolean> = new Map<string, boolean>();
 
     constructor(
         private _router: Router,
@@ -39,19 +41,52 @@ export class CharactersComponent implements OnInit {
         this.character.project.id = this.id;
     }
 
-    saveCharacter() {
-        console.log('will create...');
-        console.log(this.character);
+    saveCharacter(character: Character) {
+        if (character._id) {
+            console.log('will update...');
+            console.log(character);
 
-        this._characterService.createCharacter(this.character)
-            .subscribe(characterId => {
-                this._characterService.getCharacter(characterId.substr(characterId.lastIndexOf('/') + 1))
+            this._characterService.updateCharacter(character)
                 .subscribe(character => {
-                    this.characters.push(character);
-                    this.creatingNew = false;
+                    this.selectedCharacter = null;
                 },
                 error => this.errorMessage = <any>error);
-            },
-            error => this.errorMessage = <any>error);
+
+        } else {
+
+            console.log('will create...');
+            console.log(character);
+
+            this._characterService.createCharacter(character)
+                .subscribe(characterId => {
+                    this._characterService.getCharacter(characterId.substr(characterId.lastIndexOf('/') + 1))
+                    .subscribe(character => {
+                        this.characters.push(character);
+                        this.creatingNew = false;
+                    },
+                    error => this.errorMessage = <any>error);
+                },
+                error => this.errorMessage = <any>error);
+        }
+    }
+
+    onSelect(character: Character) {
+        this.selectedCharacter = character;
+    }
+
+    makeEditable(name: string) {
+        this.editables.set(name, true);
+    }
+
+    isEditable(name: string) {
+        return this.editables.get(name) || false;
+    }
+
+    hasEditable() {
+        let hasEditable = false;
+        this.editables.forEach(v => {
+            hasEditable = v || hasEditable;
+        });
+        return hasEditable;
     }
 }

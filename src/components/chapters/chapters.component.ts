@@ -17,19 +17,23 @@ export class ChaptersComponent implements OnInit {
 
     constructor(
         private _router: Router,
-        private _characterService: ChapterService,
+        private _chapterService: ChapterService,
         private _routeParams: RouteParams) {
     }
 
     ngOnInit() {
         this.id = this._routeParams.get('id');
-        this._characterService.getChapters(this.id)
+        this._chapterService.getChapters(this.id)
             .subscribe(
             chapters => this.chapters = chapters,
             error => this.errorMessage = <any>error);
     }
 
-    goBack() {
-        window.history.back();
+    onSelect(chapter: Chapter) {
+        this._router.navigate(['ChapterDetail', {projectId: this.id, id: chapter._id}]);
+    }
+
+    createNewChapter() {
+        this._router.navigate(['ChapterDetail', {projectId: this.id, id: 'new'}]);
     }
 }

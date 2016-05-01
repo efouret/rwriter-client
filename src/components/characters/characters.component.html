@@ -8,12 +8,31 @@
     </div>
 
     <button class="button button-add" (click)="createNewCharacter()">+</button>
-    <div class="js-newCharacter" *ngIf="creatingNew">
+    <div *ngIf="creatingNew">
       <input type="text" name="name" placeholder="Nom du personnage" [(ngModel)]="character.name">
-      <button (click)="saveCharacter()">Créer</button>
+      <button (click)="saveCharacter(character)">Créer</button>
     </div>
     <ul class="characters">
-      <li *ngFor="let character of characters" class="characters--character" (click)="onSelect(character)">{{character.name}}</li>
+      <li *ngFor="let character of characters" class="characters--character" (click)="onSelect(character)">
+        <span>{{character.name}}</span>
+        <div *ngIf="selectedCharacter === character">
+          <div class="characters--character--details">
+            <label for="name" class="label">Nom :</label>
+            <div class="editable" (click)="makeEditable('name')" *ngIf="!isEditable('name')">{{character.name}}</div>
+            <input class="input" type="text" name="name" [(ngModel)]="character.name" *ngIf="isEditable('name')">
+
+            <label for="biography" class="label">Biographie :</label>
+            <div class="editable" (click)="makeEditable('biography')" *ngIf="!isEditable('biography')">{{character.biography}}</div>
+            <textarea class="input" [(ngModel)]="character.biography" *ngIf="isEditable('biography')" name="biography"></textarea>
+
+            <label for="comments" class="label">Commentaires :</label>
+            <div class="editable" (click)="makeEditable('comments')" *ngIf="!isEditable('comments')">{{character.comments}}</div>
+            <input class="input" type="text" name="comments" [(ngModel)]="character.comments" *ngIf="isEditable('comments')">
+          </div>
+
+          <button (click)="saveCharacter(character)" *ngIf="hasEditable()">Enregistrer</button>
+        </div>
+      </li>
     </ul>
   </div>
 </div>
