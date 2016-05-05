@@ -1,4 +1,4 @@
-<div class="l-grid">
+<div class="l-grid chapterDetail">
   <project-nav [id]="projectId" [active]="'Chapters'"></project-nav>
 
   <div class="l-col" *ngIf="chapter">
@@ -16,11 +16,15 @@
 
     <h3>Scènes</h3>
     <ul class="chapterDetail--scenes">
-      <li *ngFor="let scene of scenes">
+      <li *ngFor="let scene of scenes" class="chapterDetail--scenes--scene">
         <scene [scene]="scene"></scene>
       </li>
-      <li>
-        <scene-add [chapterId]="id"></scene-add>
+      <li class="chapterDetail--scenes--scene">
+        <div class="chapterDetail--scenes--left"></div>
+        <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
+        <div class="chapterDetail--scenes--right">
+          <scene-add [pos]="'last'" (added)="addScene($event)"></scene-add>
+        </div>
       </li>
     </ul>
   </div>

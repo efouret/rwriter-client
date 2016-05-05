@@ -27,3 +27,7 @@
 .mainNav--link:hover {
     text-decoration: underline;
 }
+
+.container {
+    height: 100%;
+}

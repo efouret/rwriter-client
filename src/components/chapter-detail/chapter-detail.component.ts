@@ -60,4 +60,8 @@ export class ChapterDetailComponent implements OnInit {
                 error => this.errorMessage = <any>error);
         }
     }
+
+    addScene(pos: string) {
+        console.log(`Will add scene at pos ${pos}`);
+    }
 }
