@@ -64,7 +64,7 @@ export class ChapterDetailComponent implements OnInit {
             this._chapterService.createChapter(this.chapter)
             .subscribe(
                 id => {
-                    this.chapter._id = id;
+                    this.chapter._id = id.substr(id.lastIndexOf('/') + 1);
                     this.creating = false;
                     this.scenes.forEach((scene, idx) => {
                         scene.chapter.id = this.chapter._id;
