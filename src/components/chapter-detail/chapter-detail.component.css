@@ -27,6 +27,14 @@
   display: flex;
 }
 
+.chapterDetail--scenes--left {
+  min-width: 1rem;
+}
+
+.chapterDetail--scenes--move {
+  cursor: move;
+}
+
 .chapterDetail--scenes--left,
 .chapterDetail--scenes--right {
   max-width: 10rem;
@@ -34,11 +42,12 @@
 
 .chapterDetail--scenes--main {
   min-width: 50rem;
+  margin: 0 0.25rem;
+  border: 1px solid #ccc;
 }
 
 .chapterDetail--scenes--main-empty {
   height: 0.1rem;
   align-self: center;
-  border: 1px solid #ccc;
-  margin: 0 0.25rem;
+
 }

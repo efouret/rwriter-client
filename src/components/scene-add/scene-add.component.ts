@@ -7,18 +7,13 @@ import { Scene } from '../../services/scene';
     styleUrls: ['src/components/scene-add/scene-add.component.css'],
     directives: [],
 })
-export class SceneAddComponent implements OnInit {
-    @Input() pos: string;
+export class SceneAddComponent {
     @Output() added = new EventEmitter();
     errorMessage: string;
 
     constructor() { }
 
-    ngOnInit() {
-
-    }
-
     addScene() {
-        this.added.next(this.pos);
+        this.added.next('add');
     }
 }

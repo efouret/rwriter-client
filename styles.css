@@ -56,17 +56,23 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   color: #333;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   color: #333;
+}
+
+textarea {
+	border: none;
+	resize: none;
+	padding: 0;
 }
 
 .l-grid {
@@ -140,6 +146,40 @@ h2 {
 .btn:active {
 	outline: 0;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-success:focus {
+  background-color: #449d44;
+  border-color: #255625;
+}
+
+.btn-success:hover,
+.btn-success:active {
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn-danger:focus {
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+
+.btn-danger:hover,
+.btn-danger:active {
+  background-color: #c9302c;
+  border-color: #ac2925;
 }
 
 .btn-xs {

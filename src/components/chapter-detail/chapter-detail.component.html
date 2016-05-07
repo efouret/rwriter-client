@@ -1,8 +1,8 @@
-<div class="l-grid chapterDetail">
+<section class="l-grid chapterDetail">
   <project-nav [id]="projectId" [active]="'Chapters'"></project-nav>
 
   <div class="l-col" *ngIf="chapter">
-    <h2>Chapitre</h2>
+    <h1>Chapitre</h1>
     <div *ngIf="errorMessage">
       Une erreur est survenue : {{errorMessage}}
     </div>
@@ -11,35 +11,38 @@
       <label for="title" class="label">Titre : </label>
       <input class="input" [(ngModel)]="chapter.title" id="title" placeholder="Titre" />
 
-      <input type="submit" value="Enregistrer" (click)="saveChapter()">
+      <h2>Scènes</h2>
+      <div class="chapterDetail--scenes">
+         <div>
+          <div class="chapterDetail--scenes--scene" (dragover)="onDragOver(null, $event)" (drop)="onDrop(null, $event)">
+            <div class="chapterDetail--scenes--left"></div>
+            <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
+            <div class="chapterDetail--scenes--right">
+              <scene-add (added)="addSceneAfter(null)"></scene-add>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let scene of scenes; let i = index" draggable="true" (dragstart)="onDragStart(scene, $event)">
+          <div class="chapterDetail--scenes--scene">
+            <div class="chapterDetail--scenes--left chapterDetail--scenes--move">
+              <i class="fa fa-bars"></i>
+            </div>
+            <scene [scene]="scene" class="chapterDetail--scenes--main"></scene>
+            <div class="chapterDetail--scenes--right">
+              <scene-del (deleted)="deleteScene(scene)"></scene-del>
+            </div>
+          </div>
+          <div class="chapterDetail--scenes--scene" (dragover)="onDragOver(scene, $event)" (drop)="onDrop(scene, $event)">
+            <div class="chapterDetail--scenes--left"></div>
+            <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
+            <div class="chapterDetail--scenes--right">
+              <scene-add (added)="addSceneAfter(scene)"></scene-add>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="submit" value="Enregistrer" (click)="saveChapter()" class="btn">
     </form>
-
-    <h3>Scènes</h3>
-    <div class="chapterDetail--scenes">
-      <div *ngFor="let scene of scenes">
-        <div class="chapterDetail--scenes--scene">
-          <div class="chapterDetail--scenes--left"></div>
-          <scene [scene]="scene" class="chapterDetail--scenes--main"></scene>
-          <div class="chapterDetail--scenes--right"></div>
-        </div>
-        <div class="chapterDetail--scenes--scene">
-          <div class="chapterDetail--scenes--left"></div>
-          <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
-          <div class="chapterDetail--scenes--right">
-            <scene-add [pos]="'last'" (added)="addScene($event)"></scene-add>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="!scenes || scenes.length === 0">
-        <div class="chapterDetail--scenes--scene">
-          <div class="chapterDetail--scenes--left"></div>
-          <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
-          <div class="chapterDetail--scenes--right">
-            <scene-add [pos]="'last'" (added)="addScene($event)"></scene-add>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-
-</div>
+</section>
