@@ -117,11 +117,23 @@ export class ChapterDetailComponent implements OnInit {
         console.log('Dropped');
         let droppedScene = JSON.parse(event.dataTransfer.getData('application/json'));
 
-        console.log(`idxOf(dropped) = ${this.scenes.findIndex(s => s._id === droppedScene._id)}`);
-        this.scenes.splice(this.scenes.findIndex(s => s._id === droppedScene._id), 1);
-        console.log(`idxOf(scene) = ${this.scenes.indexOf(scene)}`);
-        this.scenes.splice(this.scenes.indexOf(scene)+1, 0, droppedScene);
+        if (!scene || droppedScene._id !== scene._id) {
+            console.log(`idxOf(dropped) = ${this.scenes.findIndex(s => s._id === droppedScene._id)}`);
+            this.scenes.splice(this.scenes.findIndex(s => s._id === droppedScene._id), 1);
+            if (scene) {
+                console.log(`idxOf(scene) = ${this.scenes.findIndex(s => s._id === scene._id)}`);
+                this.scenes.splice(this.scenes.findIndex(s => s._id === scene._id)+1, 0, droppedScene);
+            } else {
+                this.scenes.unshift(droppedScene);
+            }
+        }
 
         event.preventDefault();
+    }
+
+    download() {
+        let chapterText = this.scenes.map(s => s.contents).join('\r\n');
+        let chapterBlob = new Blob([chapterText], {type: 'text/plain'});
+        saveAs(chapterBlob, `${this.chapter.title}.txt`);
     }
 }

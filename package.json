@@ -17,6 +17,7 @@
   "dependencies": {
     "angular2": "2.0.0-beta.17",
     "es6-shim": "^0.35.0",
+    "filesaverjs": "^0.2.2",
     "postcss": "^5.0.19",
     "postcss-cli": "^2.5.2",
     "postcss-cssnext": "^2.5.2",

@@ -2,7 +2,8 @@
   <project-nav [id]="projectId" [active]="'Chapters'"></project-nav>
 
   <div class="l-col" *ngIf="chapter">
-    <h1>Chapitre</h1>
+    <h1>{{chapter.title}}</h1>
+    <a class="btn btn-xs" (click)="download()"><i class="fa fa-download"></i></a>
     <div *ngIf="errorMessage">
       Une erreur est survenue : {{errorMessage}}
     </div>
