@@ -33,12 +33,12 @@
 }
 
 .chapterDetail--scenes--main {
-  min-width: 20rem;
-  border: 1px solid #ccc;
-  margin: 0 0.25rem;
+  min-width: 50rem;
 }
 
 .chapterDetail--scenes--main-empty {
   height: 0.1rem;
   align-self: center;
+  border: 1px solid #ccc;
+  margin: 0 0.25rem;
 }

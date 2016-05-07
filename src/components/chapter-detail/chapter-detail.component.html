@@ -15,18 +15,31 @@
     </form>
 
     <h3>Scènes</h3>
-    <ul class="chapterDetail--scenes">
-      <li *ngFor="let scene of scenes" class="chapterDetail--scenes--scene">
-        <scene [scene]="scene"></scene>
-      </li>
-      <li class="chapterDetail--scenes--scene">
-        <div class="chapterDetail--scenes--left"></div>
-        <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
-        <div class="chapterDetail--scenes--right">
-          <scene-add [pos]="'last'" (added)="addScene($event)"></scene-add>
+    <div class="chapterDetail--scenes">
+      <div *ngFor="let scene of scenes">
+        <div class="chapterDetail--scenes--scene">
+          <div class="chapterDetail--scenes--left"></div>
+          <scene [scene]="scene" class="chapterDetail--scenes--main"></scene>
+          <div class="chapterDetail--scenes--right"></div>
         </div>
-      </li>
-    </ul>
+        <div class="chapterDetail--scenes--scene">
+          <div class="chapterDetail--scenes--left"></div>
+          <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
+          <div class="chapterDetail--scenes--right">
+            <scene-add [pos]="'last'" (added)="addScene($event)"></scene-add>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!scenes || scenes.length === 0">
+        <div class="chapterDetail--scenes--scene">
+          <div class="chapterDetail--scenes--left"></div>
+          <div class="chapterDetail--scenes--main chapterDetail--scenes--main-empty"></div>
+          <div class="chapterDetail--scenes--right">
+            <scene-add [pos]="'last'" (added)="addScene($event)"></scene-add>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -5,6 +5,7 @@ import { ProjectService } from '../../services/project.service';
 import { CharacterService } from '../../services/character.service';
 import { LocationService } from '../../services/location.service';
 import { ChapterService } from '../../services/chapter.service';
+import { SceneService } from '../../services/scene.service';
 
 import { ProjectsComponent } from '../projects/projects.component';
 import { ProjectDetailComponent } from '../project-detail/project-detail.component';
@@ -25,7 +26,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     ProjectService,
     CharacterService,
     LocationService,
-    ChapterService
+    ChapterService,
+    SceneService
   ]
 })
 @RouteConfig([
