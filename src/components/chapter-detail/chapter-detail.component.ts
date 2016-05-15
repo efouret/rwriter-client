@@ -134,6 +134,7 @@ export class ChapterDetailComponent implements OnInit {
     download() {
         let chapterText = this.scenes.map(s => s.contents).join('\r\n');
         let chapterBlob = new Blob([chapterText], {type: 'text/plain'});
-        saveAs(chapterBlob, `${this.chapter.title}.txt`);
+        // FIXME find a way to download using a real module (filesaverjs doesn't work)
+        //saveAs(chapterBlob, `${this.chapter.title}.txt`);
     }
 }
