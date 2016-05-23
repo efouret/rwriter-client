@@ -3,3 +3,4 @@ node_modules
 *.js
 typings
 dist
+npm-debug.log
